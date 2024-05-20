@@ -1,0 +1,4 @@
+build/
+config.ini
+dist/
+venv/
