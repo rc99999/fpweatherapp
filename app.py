@@ -16,6 +16,7 @@ params = {
 }
 
 
+# データ取得
 _data = requests.get(url, headers=headers, params=params)
 
 
