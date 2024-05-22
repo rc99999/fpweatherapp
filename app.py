@@ -46,11 +46,11 @@ def main(page: ft.Page):
 
 
     #
-    today = _info()
+    _today = _info()
 
 
     #
-    v = ft.Container(
+    _v = ft.Container(
         width=600,
         height=300,
         bgcolor=ft.colors.PURPLE,
@@ -62,7 +62,7 @@ def main(page: ft.Page):
                 ft.Row(
                     alignment="center",
                     controls=[
-                        ft.Text(today[0], size=36, weight='w500'),
+                        ft.Text(_today[0], size=36, weight='w500'),
                     ],
                 ),
                 ft.Container(padding=ft.padding.only(bottom=5)),
@@ -72,7 +72,7 @@ def main(page: ft.Page):
                     controls=[
                         ft.Column(
                             controls=[
-                                ft.Text(today[1], size=56, weight='w500'),
+                                ft.Text(_today[1], size=56, weight='w500'),
                             ]
                         ),
                         ft.Column(
@@ -85,7 +85,7 @@ def main(page: ft.Page):
                                     spacing=0,
                                     controls=[
                                         ft.Container(
-                                            content=ft.Text(today[2] + " ℃", size=40),
+                                            content=ft.Text(_today[2] + " ℃", size=40),
                                         )
                                     ]
                                 )
@@ -98,7 +98,7 @@ def main(page: ft.Page):
     )
 
 
-    page.add(v)
+    page.add(_v)
 
 
 ft.app(target=main)
