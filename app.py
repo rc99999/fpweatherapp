@@ -16,6 +16,7 @@ params = {
 }
 
 
+# データ取得
 _data = requests.get(url, headers=headers, params=params)
 
 
@@ -44,75 +45,58 @@ def main(page: ft.Page):
         ]
 
 
-    # 
-    def _top():
-        _today = _info()
-
-        top = ft.Container(
-            width=600,
-            height=300,
-            bgcolor=ft.colors.PURPLE,
-            padding=15,
-            content=ft.Column(
-                alignment="start",
-                spacing=30,
-                controls=[
-                    ft.Row(
-                        alignment="center",
-                        controls=[
-                            ft.Text(_today[0], size=36, weight='w500'),
-                        ],
-                    ),
-                    ft.Container(padding=ft.padding.only(bottom=5)),
-                    ft.Row(
-                        alignment="center",
-                        spacing=50,
-                        controls=[
-                            ft.Column(
-                                controls=[
-                                    ft.Text(_today[1], size=56, weight='w500'),
-                                ]
-                            ),
-                            ft.Column(
-                                spacing=5,
-                                horizontal_alignment="center",
-                                controls=[
-                                    ft.Text("気温", size=16, text_align="center"),
-                                    ft.Row(
-                                        vertical_alignment="start",
-                                        spacing=0,
-                                        controls=[
-                                            ft.Container(
-                                                content=ft.Text(_today[2] + " ℃", size=40),
-                                            )
-                                        ]
-                                    )
-                                ]
-                            ),
-                        ]
-                    ),
-                ],
-            )
-        )
-
-        return top
+    today = _info()
 
 
-    # 
-    _c = ft.Container(
+    v = ft.Container(
         width=600,
         height=300,
         bgcolor=ft.colors.PURPLE,
-        padding=10,
-        content=ft.Stack(
+        padding=30,
+        content=ft.Column(
+            alignment="start",
+            spacing=30,
             controls=[
-                _top(),
-            ]
+                ft.Row(
+                    alignment="center",
+                    controls=[
+                        ft.Text(today[0], size=36, weight='w500'),
+                    ],
+                ),
+                ft.Container(padding=ft.padding.only(bottom=5)),
+                ft.Row(
+                    alignment="center",
+                    spacing=50,
+                    controls=[
+                        ft.Column(
+                            controls=[
+                                ft.Text(today[1], size=56, weight='w500'),
+                            ]
+                        ),
+                        ft.Column(
+                            spacing=5,
+                            horizontal_alignment="center",
+                            controls=[
+                                ft.Text("気温", size=16, text_align="center"),
+                                ft.Row(
+                                    vertical_alignment="start",
+                                    spacing=0,
+                                    controls=[
+                                        ft.Container(
+                                            content=ft.Text(today[2] + " ℃", size=40),
+                                        )
+                                    ]
+                                )
+                            ]
+                        ),
+                    ]
+                ),
+            ],
         )
     )
 
 
-    page.add(_c)
+    page.add(v)
 
 
 ft.app(target=main)
